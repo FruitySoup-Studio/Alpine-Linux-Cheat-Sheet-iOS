@@ -14,5 +14,10 @@ When you open the app your screen should look similar to this
 
 <img width="294" height="589" alt="front-iphone" src="https://github.com/user-attachments/assets/8bdd640d-f7b2-478c-823d-bf55af1f958d" />
 
+
+____________________________________________________________________________________________________________
+
+To view the Cheat Sheet just right click on the Alp.html file and open it inside a browser.
+
 You can really leverage this if you have a newer iphone with a decent amount of storage. I was able to install openclaw and do things Apple probably wouldn't approve of. With that said install openclaw at your own risk I and FruitySoup are not responsible for anything you decide to do with your own devices with this information mmk. 
 -Happy tinkering-
