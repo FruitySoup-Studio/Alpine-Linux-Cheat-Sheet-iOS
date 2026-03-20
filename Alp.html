@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!--From FruitySoup By: Jevante B.-->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>iSH + Alpine Linux: Commands & Power-Ups</title>
+    <style>
+         :root {
+            --bg: #0b0f14;
+            --fg: #e6eef7;
+            --muted: #9fb0c0;
+            --accent: #7cc4ff;
+            --card: #121821;
+            --code: #0e1420;
+        }
+        
+        .logo {
+            position: fixed;
+            top: 15px;
+            right: 20px;
+            width: 60px;
+            height: auto;
+            opacity: 0.9;
+            z-index: 1000;
+            transition: opacity 0.3s ease;
+        }
+        
+        .logo:hover {
+            opacity: 1;
+        }
+        
+        html,
+        body {
+            background: var(--bg);
+            color: var(--fg);
+            font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Inter, Helvetica, Arial, sans-serif;
+            margin: 0;
+        }
+        
+        .wrap {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem 1rem 6rem;
+        }
+        
+        h1,
+        h2,
+        h3 {
+            line-height: 1.25;
+            margin: 1.5rem 0 .75rem;
+        }
+        
+        h1 {
+            font-size: 2rem
+        }
+        
+        h2 {
+            font-size: 1.4rem;
+            color: var(--accent)
+        }
+        
+        p {
+            color: var(--fg);
+            opacity: .95
+        }
+        
+        .muted {
+            color: var(--muted)
+        }
+        
+        .card {
+            background: var(--card);
+            border: 1px solid #1d2732;
+            border-radius: 14px;
+            padding: 1rem 1.25rem;
+            margin: 1rem 0
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--card);
+            border-radius: 12px;
+            overflow: hidden
+        }
+        
+        th,
+        td {
+            padding: .65rem .75rem;
+            border-bottom: 1px solid #1d2732;
+            vertical-align: top
+        }
+        
+        th {
+            background: #0f1620;
+            color: #cde8ff;
+            text-align: left;
+            position: sticky;
+            top: 0
+        }
+        
+        code,
+        kbd {
+            background: var(--code);
+            padding: .15rem .35rem;
+            border-radius: 6px;
+            color: #cfe9ff
+        }
+        
+        pre {
+            background: var(--code);
+            padding: 1rem;
+            border-radius: 12px;
+            overflow: auto
+        }
+        
+        .grid {
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr))
+        }
+        
+        .tip {
+            border-left: 4px solid var(--accent);
+            padding: .5rem 1rem;
+            background: #0e1420;
+            border-radius: 8px
+        }
+        
+        .small {
+            font-size: .92rem
+        }
+    </style>
+</head>
+
+<body>
+    <img src="logo-20.png" alt="Logo" class="logo" />
+    <div class="wrap">
+        <h1>iSH + Alpine Linux on iPhone<br><span class="muted small">Quick command reference & ideas to power-up your device</span></h1>
+
+        <div class="card tip">
+            <p><strong>Heads-up:</strong> iSH emulates a Linux userspace (BusyBox + Alpine) in a sandbox. It’s awesome for CLI tools, scripting, editing, git, and learning — but it <em>can’t</em> access iOS hardware directly or run heavy background daemons.</p>
+        </div>
+
+        <h2>Core commands (BusyBox/Alpine)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Command</th>
+                    <th>What it does</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>uname -a</code></td>
+                    <td>Kernel/OS info</td>
+                </tr>
+                <tr>
+                    <td><code>whoami</code></td>
+                    <td>Current user</td>
+                </tr>
+                <tr>
+                    <td><code>pwd</code></td>
+                    <td>Print working directory</td>
+                </tr>
+                <tr>
+                    <td><code>ls -lAh</code></td>
+                    <td>List files (long/all/human)</td>
+                </tr>
+                <tr>
+                    <td><code>cd</code></td>
+                    <td>Change directory</td>
+                </tr>
+                <tr>
+                    <td><code>cp, mv, rm, mkdir, rmdir</code></td>
+                    <td>Copy, move/rename, remove, make/remove dirs</td>
+                </tr>
+                <tr>
+                    <td><code>cat, head, tail, less</code></td>
+                    <td>View files</td>
+                </tr>
+                <tr>
+                    <td><code>find . -name "foo*"</code></td>
+                    <td>Search files by name</td>
+                </tr>
+                <tr>
+                    <td><code>grep -R "text" .</code></td>
+                    <td>Search inside files</td>
+                </tr>
+                <tr>
+                    <td><code>du -sh *</code></td>
+                    <td>Show folder sizes</td>
+                </tr>
+                <tr>
+                    <td><code>df -h</code></td>
+                    <td>Disk usage summary</td>
+                </tr>
+                <tr>
+                    <td><code>ps, top, kill &lt;pid&gt;</code></td>
+                    <td>Process list / kill task</td>
+                </tr>
+                <tr>
+                    <td><code>wget &lt;url&gt;</code>, <code>curl -LO &lt;url&gt;</code></td>
+                    <td>Download files</td>
+                </tr>
+                <tr>
+                    <td><code>ping &lt;host&gt;</code></td>
+                    <td>Network reachability</td>
+                </tr>
+                <tr>
+                    <td><code>chmod 755 file</code></td>
+                    <td>Change permissions</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Package management with <code>apk</code></h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Command</th>
+                    <th>Purpose</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>apk update</code></td>
+                    <td>Refresh package list</td>
+                </tr>
+                <tr>
+                    <td><code>apk upgrade</code></td>
+                    <td>Upgrade installed packages</td>
+                </tr>
+                <tr>
+                    <td><code>apk search &lt;pkg&gt;</code></td>
+                    <td>Find packages</td>
+                </tr>
+                <tr>
+                    <td><code>apk add &lt;pkg&gt;</code></td>
+                    <td>Install a package</td>
+                </tr>
+                <tr>
+                    <td><code>apk del &lt;pkg&gt;</code></td>
+                    <td>Remove a package</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Creating your own user</h2>
+        <pre><code>apk add shadow
+useradd -m -s /bin/ash &lt;yourname&gt;
+passwd &lt;yourname&gt;
+su - &lt;yourname&gt;</code></pre>
+
+        <h2>Starter-pack installs</h2>
+        <pre><code>apk add nano vim git curl wget zip unzip tar less
+apk add python3 py3-pip py3-venv
+apk add nodejs npm
+apk add build-base cmake pkgconf
+apk add openssh-client rsync openssl bind-tools net-tools
+apk add ripgrep fd fzf bat tree ncdu tmux</code></pre>
+
+        <h2>What you can do with Alpine on iPhone</h2>
+        <ul>
+            <li>Run Python or Node.js scripts.</li>
+            <li>Clone, edit, and push GitHub projects.</li>
+            <li>Call APIs with <code>curl</code> or <code>httpie</code>.</li>
+            <li>Learn shell scripting & Linux basics.</li>
+            <li>Build small CLI tools with <code>build-base</code>.</li>
+            <li>SSH into servers & manage files remotely.</li>
+        </ul>
+
+        <h2>Prompt customization</h2>
+        <pre><code># ~/.profile
+export PS1="\\u@\\h:\\w\\$ "</code></pre>
+
+        <div class="card tip small">
+            <p>Files created in iSH appear under <strong>Files → On My iPhone → iSH</strong>.</p>
+            <p>Brought to you by FruitySoup Studio</p>
+            <p> Created By: Jevante B.</p>
+        </div>
+    </div>
+</body>
+
+</html>
